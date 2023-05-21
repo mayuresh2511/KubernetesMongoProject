@@ -22,13 +22,13 @@ spec:
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
           valueFrom:
-            secretKey:
-              name: mongo-secret
+            secretKeyRef:
+              name: mongodb-secret
               key: mongo-root-username
         - name: MONGO_INITDB_ROOT_PASSWORD
           valueFrom:
-            secretKey:
-              name: mongo-secret
+            secretKeyRef:
+              name: mongodb-secret
               key: mongo-root-password
 ---
 
@@ -41,5 +41,5 @@ spec:
     app: mongodb
   ports:
     - protocol: TCP
-      ports: 27017
+      port: 27017
       targetPort: 27017
